@@ -63,7 +63,7 @@ public class ServerServiceController
     public ResponseEntity<Server> createServer(@Valid @RequestBody Server myServer, HttpServletRequest request){
         System.out.println(myServer.toString());
         String ipAddress = request.getRemoteAddr();
-        myServer.setIp(ipAddress);
+        myServer.setIp(ipAddress+":"+myServer.getIp());
     	Server created = service.createServer(myServer);
         System.out.println(created.toString());
         return new ResponseEntity<Server>(created, new HttpHeaders(), HttpStatus.OK);
